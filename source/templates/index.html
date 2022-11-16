@@ -1,0 +1,45 @@
+<!doctype html>
+<title>frigate-make-clip</title>
+<head>
+    <style>
+        body, input, button, select, option{
+            font-size: xx-large;
+        }
+        .hidden{
+            display:none;
+        }
+      </style>
+</head>
+<body>
+    <h2 id="downloading" class="hidden">File is downloading. Check your Downloads folder.</h2>
+    <p>Choose a camera, start time, and end time.</p>
+    <p>Camera</p>
+    <select id="camera-name">
+        {% for camera_name in camera_names %}
+            <option value="{{camera_name}}">{{camera_name}}</option>
+        {% endfor %}
+    </select>
+    <p>Start</p>
+    <input id="start-date" type="date" value="2022-11-16"/>
+    <input id="start-time" type="time" value="08:10"/>
+    <p>End</p>
+    <input id="end-date" type="date" value="2022-11-16"/>
+    <input id="end-time" type="time" value="08:12" />
+    <br/>
+    <br/>
+    <button id="download-clip-btn">Download Clip</button>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.getElementById('download-clip-btn').onclick = ()=>{
+                document.getElementById('downloading').classList.add('hidden')
+                let camera_name = document.getElementById('camera-name').value
+                let start_date = document.getElementById('start-date').value
+                let start_time = document.getElementById('start-time').value.replace(':','-')
+                let end_date = document.getElementById('end-date').value
+                let end_time = document.getElementById('end-time').value.replace(':','-')
+                window.location=`/api/clip/download?camera_name=${camera_name}&start_date=${start_date}&start_time=${start_time}&end_date=${end_date}&end_time=${end_time}`
+                document.getElementById('downloading').classList.remove('hidden')
+            }
+        });
+    </script>
+</body>
