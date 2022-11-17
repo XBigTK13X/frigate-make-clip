@@ -20,16 +20,20 @@
         {% endfor %}
     </select>
     <p>Start</p>
-    <input id="start-date" type="date" value="2022-11-16"/>
-    <input id="start-time" type="time" value="08:10"/>
+    <input id="start-date" type="date"/>
+    <input id="start-time" type="time"/>
     <p>End</p>
-    <input id="end-date" type="date" value="2022-11-16"/>
-    <input id="end-time" type="time" value="08:12" />
+    <input id="end-date" type="date" />
+    <input id="end-time" type="time" />
     <br/>
     <br/>
     <button id="download-clip-btn">Download Clip</button>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) {
+            document.getElementById('start-date').valueAsDate = new Date();
+            document.getElementById('end-date').valueAsDate = new Date();
+            document.getElementById('start-time').value = '12:00'
+            document.getElementById('end-time').value = '13:00'
             document.getElementById('download-clip-btn').onclick = ()=>{
                 document.getElementById('downloading').classList.add('hidden')
                 let camera_name = document.getElementById('camera-name').value

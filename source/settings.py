@@ -1,10 +1,22 @@
+import os
+
 config = {
-    'web_api_port': 8765,
-    'web_api_url': 'http://localhost:8765',
-    'recording_dir': '/media/dev-recordings',
-    'clip_output_dir': '/home/kretst/frigate-make-clip',
+    'recording_dir': os.getenv('FMC_RECORDING_DIR', '/media/dev-recordings'),
+    'clip_output_dir': os.getenv('FMC_CLIP_OUTPUT_DIR', '/home/kretst/frigate-make-clip'),
     'camera_names': [
+        'green-room',
+        'yellow-room',
         'play-north',
-        'play-south'
+        'play-south',
+        'blue-room',
+        'purple-room',
+        'dining-room',
+        'kitchen',
+        'basement-north',
+        'basement-south',
+        'garage',
+        'outside-east',
+        'outside-west',
+        'patio'
     ]
 }
