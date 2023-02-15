@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from pytz import timezone
 
 def make_target(clip_date, clip_time):
     date_parts = clip_date.split('-')
@@ -10,9 +11,8 @@ def make_target(clip_date, clip_time):
         'day': int(date_parts[2]),
         'hour': int(time_parts[0]),
         'minute': int(time_parts[1]),
-
     }
 
-    result['dt'] = datetime(result['year'], result['month'], result['day'], result['hour'], result['minute'])
+    result['dt'] = timezone("America/Chicago").localize(datetime(result['year'], result['month'], result['day'], result['hour'], result['minute']))
 
     return result
