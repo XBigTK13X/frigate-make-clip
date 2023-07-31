@@ -17,6 +17,7 @@ config = {
         'garage',
         'outside-east',
         'outside-west',
-        'patio'
+        'patio',
+        'front-door'
     ]
 }
